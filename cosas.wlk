@@ -21,8 +21,7 @@ object ladrillo {
     method peso() = 2
 }
 object arenaAGranel {
-    var property pesoDado = 0
-    method peso() = pesoDado
+    var property peso = 0
     method nivelDePeligro() = 1
 }
 object bateriaAntiaerea {
@@ -38,7 +37,6 @@ object contenedorPortuario {
 }
 object residuosRadiactivos {
     var property peso = 0
-    method peso() = peso
     method nivelDePeligro() = 200
 }
 object embalajeDeSeguridad {
