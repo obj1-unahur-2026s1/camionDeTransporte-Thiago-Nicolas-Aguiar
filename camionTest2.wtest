@@ -1,0 +1,42 @@
+import camion2.*
+import cosas2.*
+
+describe "Test Camion 2" {
+    test "Bumblebee cambia a robot al ser cargado" {
+        camion.cargar(bumblebee)
+        assert.notThat(bumblebee.estaTransformadoEnAuto())
+    }
+    test "Al ser cargado al paquete de ladrillos de le agregan 12" {
+        paqueteLadrillos.cantidadLadrillos(10)
+        camion.cargar(paqueteLadrillos)
+        assert.equals(22, paqueteLadrillos.cantidadLadrillos())
+    }
+    test "Al ser cargado se pierden 10 kilos de arena" {
+        arenaAGranel.peso(50)
+        camion.cargar(arenaAGranel)
+        assert.equals(40, arenaAGranel.peso())
+    }
+    test "Al ser cargado la bateria carga misiles dentro" {
+        camion.cargar(bateriaAntiaerea)
+        assert.that(bateriaAntiaerea.tieneMisiles())
+    }
+    test "Todo dentro del contenedor reacciona"{
+        arenaAGranel.peso(50)
+        bumblebee.estaTransformadoEnAuto(false)
+
+        contenedorPortuario.añadirDentro(arenaAGranel)
+        contenedorPortuario.añadirDentro(bumblebee)
+        contenedorPortuario.añadirDentro(bateriaAntiaerea)
+
+        camion.cargar(contenedorPortuario)
+
+        assert.equals(40, arenaAGranel.peso())
+        assert.notThat(bumblebee.estaTransformadoEnAuto())
+        assert.that(bateriaAntiaerea.tieneMisiles())
+    }
+    test "Al cargar se le agregan 15 kilos a residuos" {
+        residuosRadiactivos.peso(15)
+        camion.cargar(residuosRadiactivos)
+        assert.equals(30, residuosRadiactivos.peso())
+    }
+}
