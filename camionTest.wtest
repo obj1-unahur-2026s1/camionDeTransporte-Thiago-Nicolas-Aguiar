@@ -1,9 +1,37 @@
 import camion.*
+import cosas.*
 
-describe "group of test for camion" {
+describe "Test de camion" {
 
-  test "first test" {
-    assert.that(true)
+  test "Peso total del camion con todo el cargamento" {
+    // Resultado buscasdo = 1000 + 800 + 150 + 300 + (80 * 2)
+    camion.cargar(bumblebee)
+    camion.cargar(arenaAGranel)
+    camion.cargar(bateriaAntiaerea)
+    camion.cargar(embalajeDeSeguridad)
+
+    bumblebee.estaTransformado(false)
+    arenaAGranel.peso(150)
+    bateriaAntiaerea.tieneMisiles()
+    paqueteLadrillos.cantidadLadrillos(80)
+    embalajeDeSeguridad.objetoDentro(paqueteLadrillos)
+
+    assert.equals(2410, camion.pesoTotal())
+  }
+
+  test "Es posible circular" {
+    camion.cargar(bumblebee)
+    camion.cargar(arenaAGranel)
+    camion.cargar(bateriaAntiaerea)
+    camion.cargar(embalajeDeSeguridad)
+
+    bumblebee.estaTransformado(false)
+    arenaAGranel.peso(150)
+    bateriaAntiaerea.tieneMisiles()
+    paqueteLadrillos.cantidadLadrillos(80)
+    embalajeDeSeguridad.objetoDentro(paqueteLadrillos)
+
+    assert.that(camion.puedeCircular(120))
   }
 
 }

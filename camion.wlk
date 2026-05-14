@@ -20,7 +20,7 @@ object camion {
     // Peso Maximo del camion
     method camionExcedido() = self.pesoTotal() >= 2500
     // Puede circular
-    method puedeCircular(nivel) = !self.camionExcedido() && carga.all({c => c.nivelDePeligro() <= nivel})
+    method puedeCircular(nivel) = !self.camionExcedido() && carga.all({c => c.nivelDePeligro() < nivel})
 
     // Agregados
     // Peso minimo/maximo
