@@ -1,7 +1,12 @@
 object camion {
     // Metodo de lista
     const carga = []
-    method cargar(elemento) = carga.add(elemento)
+    method cargar(elemento) {
+        elemento.sufrirCambio()
+        carga.add(elemento)
+    } 
+    // Metodo bulto (nuevo)
+    method totalBulto() = carga.sum({c => c.cantidadBulto()})
     method descargar(elemento) = carga.remove(elemento)
     // Peso del camion total (con carga incluida)
     method pesoCamion() = 1000

@@ -3,10 +3,10 @@ object knightRider {
     method nivelDePeligro() = 10
 }
 object bumblebee {
-    var property estaTransformado = true 
+    var property estaTransformadoEnAuto = true 
     method peso() = 800
     method nivelDePeligro() {
-        if (estaTransformado) 
+        if (estaTransformadoEnAuto) 
             return 15
         else 
             return 30
